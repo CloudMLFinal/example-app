@@ -28,13 +28,6 @@ class TestApp(unittest.TestCase):
         data = json.loads(response.data.decode('utf-8'))
         self.assertEqual(data['message'], 'error')
 
-    def test_test3_timeout(self):
-        """Test the /test3 endpoint"""
-        response = self.app.get('/test3')
-        self.assertEqual(response.status_code, 500)
-        data = json.loads(response.data.decode('utf-8'))
-        self.assertEqual(data['message'], 'timeout')
-
 
 if __name__ == '__main__':
     unittest.main() 

@@ -1,4 +1,3 @@
-#!/bin/bash
 docker build -t example-app -f DockerFile .
 
 if [ $? -eq 0 ]; then
