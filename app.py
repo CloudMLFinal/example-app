@@ -42,7 +42,6 @@ def test4():
 #health check
 @app.route('/health')
 def health():
-    logger.info("[GET] /health")
     return jsonify({'message': 'healthy'}), 200
 
 if __name__ == '__main__':
