@@ -7,7 +7,8 @@ from logging.handlers import RotatingFileHandler
 #logger
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - [%(filename)s:%(lineno)d] - %(message)s',
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[logging.StreamHandler()]
 )
 logger = logging.getLogger(__name__)
 
@@ -16,7 +17,7 @@ app = Flask(__name__)
 
 @app.after_request
 def log_response_info(response):
-    logger.info(f'[{request.method}] {request.url}: {response.status}')
+    logger.info(f'[{request.method}] {request.path}: {response.status}')
     return response
 
 @app.route('/')

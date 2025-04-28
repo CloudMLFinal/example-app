@@ -10,3 +10,6 @@ test:
 remove:
 	docker stop cloudml-app
 	docker rm cloudml-app
+
+run-local:
+	python app.py
