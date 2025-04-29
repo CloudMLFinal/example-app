@@ -6,17 +6,26 @@ import sys
 from logging.handlers import RotatingFileHandler
 
 #logger
-logging.StreamHandler(sys.stdout)
-
+# Configure root logger
 root = logging.getLogger()
-root.setLevel(logging.DEBUG)
+root.setLevel(logging.INFO)  # Set root logger level to INFO
+
+# Create and configure stdout handler
 handler = logging.StreamHandler(sys.stdout)
-handler.setLevel(logging.DEBUG)
-formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+handler.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - [%(filename)s:%(lineno)d] - %(message)s')
 handler.setFormatter(formatter)
+
+# Remove any existing handlers to avoid duplicate logs
+for h in root.handlers[:]:
+    root.removeHandler(h)
+
+# Add our configured handler
 root.addHandler(handler)
 
+# Create app logger
 logger = logging.getLogger('app')
+logger.setLevel(logging.INFO)
 
 #app
 app = Flask(__name__)
