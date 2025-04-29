@@ -2,15 +2,21 @@ import os
 from flask import Flask, jsonify, request
 import time
 import logging
+import sys
 from logging.handlers import RotatingFileHandler
 
 #logger
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[logging.StreamHandler()]
-)
-logger = logging.getLogger(__name__)
+logging.StreamHandler(sys.stdout)
+
+root = logging.getLogger()
+root.setLevel(logging.DEBUG)
+handler = logging.StreamHandler(sys.stdout)
+handler.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+root.addHandler(handler)
+
+logger = logging.getLogger('app')
 
 #app
 app = Flask(__name__)
