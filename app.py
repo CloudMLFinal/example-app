@@ -58,7 +58,6 @@ def test4():
         print("Memory leak")
     return jsonify({'message': 'memory leak'}), 200 
 
-
 @app.route('/test5')
 def test5():
     user_info = {
