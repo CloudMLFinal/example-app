@@ -58,6 +58,22 @@ def test4():
         print("Memory leak")
     return jsonify({'message': 'memory leak'}), 200 
 
+
+@app.route('/test5')
+def test5():
+    user_info = {
+        "name": "John",
+        "age": 20,
+        "email": "john@example.com",
+        "phone": {
+            "home": "1234567890",
+            "work": "0987654321",
+            "mobile": "1122334455"
+        },
+    }
+    return jsonify(user_info["phone"]["home"]), 200
+
+
 #health check
 @app.route('/health')
 def health():
