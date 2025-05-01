@@ -65,7 +65,6 @@ def test5():
         "age": 20,
         "email": "john@example.com",
         "phone": {
-            "home": "1234567890",
             "work": "0987654321",
             "mobile": "1122334455"
         },
