@@ -54,7 +54,11 @@ def test3():
 @app.route('/test4')
 def test4():
     while True:
-        time.sleep(1)
+        try:
+            time.sleep(1)
+        except Exception as e:
+            current_app.logger.error(f"Error in test4 endpoint: {str(e)}")
+            raise
         print("Memory leak")
     return jsonify({'message': 'memory leak'}), 200 
 
