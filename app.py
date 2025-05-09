@@ -49,12 +49,15 @@ def test2():
 
 @app.route('/test3')
 def test3():
-    return 1/0
+    try:
+        return 1/0
+    except ZeroDivisionError:
+        return "Error: division by zero", 400
 
 @app.route('/test4')
 def test4():
     while True:
-        time.sleep(1)
+        # Removed blocking sleep - use async alternatives if waiting is needed
         print("Memory leak")
     return jsonify({'message': 'memory leak'}), 200 
 
