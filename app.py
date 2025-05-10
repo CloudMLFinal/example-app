@@ -49,7 +49,10 @@ def test2():
 
 @app.route('/test3')
 def test3():
-    return 1/0
+    try:
+        return 1/0
+    except ZeroDivisionError:
+        return "Error: Division by zero is not allowed", 400
 
 @app.route('/test4')
 def test4():
