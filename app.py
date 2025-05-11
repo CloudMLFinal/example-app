@@ -69,7 +69,7 @@ def test5():
             "mobile": "1122334455"
         },
     }
-    return jsonify(user_info["phone"]["home"]), 200
+    return jsonify(user_info.get("phone", {}).get("home", "")), 200
 
 
 #health check
