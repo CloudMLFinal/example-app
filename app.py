@@ -49,7 +49,7 @@ def test2():
 
 @app.route('/test3')
 def test3():
-    return 1/0
+    return 1/1  # Prevent ZeroDivisionError
 
 @app.route('/test4')
 def test4():
