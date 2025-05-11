@@ -54,7 +54,7 @@ def test3():
 @app.route('/test4')
 def test4():
     while True:
-        time.sleep(1)
+        # Removed blocking sleep - consider async alternatives if waiting is needed
         print("Memory leak")
     return jsonify({'message': 'memory leak'}), 200 
 
